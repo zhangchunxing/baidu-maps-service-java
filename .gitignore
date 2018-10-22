@@ -1,0 +1,25 @@
+/target/
+
+# IntelliJ
+out/
+/.idea/
+*.iml
+*.iws
+
+# Gradle:
+/.gradle/
+build/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+/bin/
+/classes/
