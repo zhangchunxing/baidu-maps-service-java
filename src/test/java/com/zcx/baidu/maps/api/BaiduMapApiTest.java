@@ -1,6 +1,8 @@
 package com.zcx.baidu.maps.api;
 
 import com.google.gson.Gson;
+import com.zcx.baidu.maps.common.GeoApiContext;
+import com.zcx.baidu.maps.model.DistrictRegionSearchRequest;
 import com.zcx.baidu.maps.model.PlacesSearchResponse;
 import com.zcx.baidu.maps.model.PlacesSearchResult;
 import okhttp3.HttpUrl;
@@ -24,6 +26,14 @@ public class BaiduMapApiTest {
 
     private Gson gs = new Gson();
 
+    // 计算sn跟参数对出现顺序有关，
+    // get请求请使用LinkedHashMap保存<key,value>，
+    // 该方法根据key的插入顺序排序；post请使用TreeMap保存<key,value>，
+    // 该方法会自动将key按照字母a-z顺序排序。
+    // 所以get请求可自定义参数顺序（sn参数必须在最后）发送请求，
+    // 但是post请求必须按照字母a-z顺序填充body（sn参数必须在最后）。
+    // 以get请求为例：http://api.map.baidu.com/geocoder/v2/?address=百度大厦&output=json&ak=yourak，
+    // paramsMap中先放入address，再放output，然后放ak，放入顺序必须跟get请求中对应参数的出现顺序保持一致。
 
     /**
      * 行政区域检索
@@ -59,5 +69,12 @@ public class BaiduMapApiTest {
                 System.out.println(result.address);
             }
         }
+    }
+
+    @Test
+    public void AdministrativeRegionsSearchTest2 () throws Exception {
+        GeoApiContext geoApiContext = new GeoApiContext(whiteSK);
+        new DistrictRegionSearchRequest(geoApiContext).query("ATM机").tag("银行").region("北京").makeRequest();
+
     }
 }
