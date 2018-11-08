@@ -13,16 +13,16 @@ import java.net.URLEncoder;
 import java.util.Map;
 
 /**
- * @description:
+ * @description:  这个类应该设计成单例！
  * @author: zhangchunxing
  * @create: 2018-11-05
  */
 public class GeoApiContext {
-	public String AK;
+	private final String AK;
 
-	public final OkHttpClient client = new OkHttpClient();
+	private final OkHttpClient client = new OkHttpClient();
 
-	private Gson gs = new Gson();
+	private final Gson gs = new Gson();
 
 	public GeoApiContext(String AK) {
 		this.AK = AK;

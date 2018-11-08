@@ -14,10 +14,10 @@ import java.util.LinkedHashMap;
  */
 public class DistrictRegionSearchRequest {
 
-	private ApiConfig API_CONFIG = new ApiConfig("/place/v2/search?output=json")
+	static final ApiConfig API_CONFIG = new ApiConfig("/place/v2/search?output=json")
 			.fieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
 
-	private GeoApiContext context;
+	private final GeoApiContext context;
 
 	// 存放查询条件
 	private LinkedHashMap<String, String> params = new LinkedHashMap<>();
