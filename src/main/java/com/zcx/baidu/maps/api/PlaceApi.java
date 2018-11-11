@@ -1,16 +1,33 @@
 package com.zcx.baidu.maps.api;
 
-import okhttp3.OkHttpClient;
+
+import com.zcx.baidu.maps.common.GeoApiContext;
+import com.zcx.baidu.maps.model.DistrictRegionSearchRequest;
 
 /**
+ * @description： 地点检索服务
  * @author: zhangchunxing
  * @create: 2018-10-26
  **/
 public class PlaceApi {
-    private String hostName = "http://api.map.baidu.com";
-    private String placeSearchUrl = "/place/v2/search";
-    private String SK = "4EOhUAvNHmEcAj15xBEFY08BLzPNOnIV";
-    public final OkHttpClient client = new OkHttpClient();
+
+    private PlaceApi() {}
+
+    /**
+     * 行政区划区域检索
+     *
+     * @param context
+     * @param query 检索关键字
+     * @param region 检索行政区划区域
+     * @return
+     */
+    public static DistrictRegionSearchRequest districtRegionSearchQuery(GeoApiContext context, String query,
+                                                                        String region) {
+
+        return null;
+
+    }
+
 
 
 
