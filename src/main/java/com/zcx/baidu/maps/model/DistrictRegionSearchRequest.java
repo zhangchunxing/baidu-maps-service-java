@@ -42,6 +42,22 @@ public class DistrictRegionSearchRequest {
 		return this;
 	}
 
+	public DistrictRegionSearchRequest cityLimit(boolean limited) {
+		String city_limit = String.valueOf(limited);
+		params.put("city_limit", city_limit);
+		return this;
+	}
+	public DistrictRegionSearchRequest scope(PoiInfoEnum poiInfoEnum) {
+		String scope = String.valueOf(poiInfoEnum.getCode());
+		params.put("scope", scope);
+		return this;
+	}
+	public DistrictRegionSearchRequest timestamp(long timestamp) {
+		String toString = String.valueOf(timestamp);
+		params.put("timestamp", toString);
+		return this;
+	}
+
 	public PlacesSearchResponse makeRequest() throws IOException {
 		return context.get(API_CONFIG, params);
 	}

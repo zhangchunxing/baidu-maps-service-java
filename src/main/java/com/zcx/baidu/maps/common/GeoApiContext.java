@@ -43,15 +43,15 @@ public class GeoApiContext {
 			}
 		});
 
-
 		Request request = new Request.Builder()
 				.url(sburl.toString())
 				.build();
 
+		System.err.println(request);
+
 		Response response = client.newCall(request).execute();
 
 		PlacesSearchResponse ps = null;
-
 		if (response.isSuccessful()) {
 			//如果请求成功，通知Handler更新数据
 			String res = response.body().string();
@@ -63,7 +63,6 @@ public class GeoApiContext {
 					System.out.println(result.address);
 				}
 			}
-
 		}
 
 		return ps;

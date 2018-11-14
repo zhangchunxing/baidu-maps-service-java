@@ -21,11 +21,13 @@ public class PlaceApi {
      * @param region 检索行政区划区域
      * @return
      */
-    public static DistrictRegionSearchRequest districtRegionSearchQuery(GeoApiContext context, String query,
+    public static DistrictRegionSearchRequest districtRegionSearchQuery(GeoApiContext context,String query,
                                                                         String region) {
 
-        return null;
-
+        DistrictRegionSearchRequest request = new DistrictRegionSearchRequest(context);
+        request.query(query);
+        request.region(region);
+        return request;
     }
 
 

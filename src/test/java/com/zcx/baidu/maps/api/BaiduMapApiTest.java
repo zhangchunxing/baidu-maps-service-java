@@ -77,4 +77,11 @@ public class BaiduMapApiTest {
         new DistrictRegionSearchRequest(geoApiContext).query("ATM机").tag("银行").region("北京").makeRequest();
 
     }
+
+    @Test
+    public void AdministrativeRegionsSearchTest3 () throws Exception {
+        GeoApiContext geoApiContext = new GeoApiContext(whiteSK);
+        PlaceApi.districtRegionSearchQuery(geoApiContext, "ATM机", "北京").tag("银行").cityLimit(true).makeRequest();
+
+    }
 }
