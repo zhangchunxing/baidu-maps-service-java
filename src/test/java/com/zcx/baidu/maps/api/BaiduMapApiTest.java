@@ -9,6 +9,7 @@ import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -25,6 +26,13 @@ public class BaiduMapApiTest {
     public final OkHttpClient client = new OkHttpClient();
 
     private Gson gs = new Gson();
+
+    private GeoApiContext geoApiContext;
+
+    @Before
+    public void setup() {
+        geoApiContext = new GeoApiContext(whiteSK);
+    }
 
     // 计算sn跟参数对出现顺序有关，
     // get请求请使用LinkedHashMap保存<key,value>，
@@ -73,15 +81,18 @@ public class BaiduMapApiTest {
 
     @Test
     public void AdministrativeRegionsSearchTest2 () throws Exception {
-        GeoApiContext geoApiContext = new GeoApiContext(whiteSK);
         new DistrictRegionSearchRequest(geoApiContext).query("ATM机").tag("银行").region("北京").makeRequest();
 
     }
 
     @Test
     public void AdministrativeRegionsSearchTest3 () throws Exception {
-        GeoApiContext geoApiContext = new GeoApiContext(whiteSK);
         PlaceApi.districtRegionSearchQuery(geoApiContext, "ATM机", "北京").tag("银行").cityLimit(true).makeRequest();
+
+    }
+
+    @Test
+    public void  CircularRegionSearchTest () throws Exception {
 
     }
 }
