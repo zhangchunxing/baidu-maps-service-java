@@ -4,6 +4,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.zcx.baidu.maps.common.ApiConfig;
 import com.zcx.baidu.maps.common.GeoApiContext;
 
+import java.io.IOException;
 import java.util.LinkedHashMap;
 
 /**
@@ -44,5 +45,9 @@ public class CircularRegionSearchRequest {
 		String limited = String.valueOf(limited0);
 		params.put("limited", limited   );
 		return this;
+	}
+
+	public PlacesSearchResponse makeRequest() throws IOException {
+		return context.get(API_CONFIG, params);
 	}
 }

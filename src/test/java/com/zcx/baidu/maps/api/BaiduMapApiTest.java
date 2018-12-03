@@ -3,6 +3,7 @@ package com.zcx.baidu.maps.api;
 import com.google.gson.Gson;
 import com.zcx.baidu.maps.common.GeoApiContext;
 import com.zcx.baidu.maps.model.DistrictRegionSearchRequest;
+import com.zcx.baidu.maps.model.LatLng;
 import com.zcx.baidu.maps.model.PlacesSearchResponse;
 import com.zcx.baidu.maps.model.PlacesSearchResult;
 import okhttp3.HttpUrl;
@@ -87,12 +88,25 @@ public class BaiduMapApiTest {
 
     @Test
     public void AdministrativeRegionsSearchTest3 () throws Exception {
-        PlaceApi.districtRegionSearchQuery(geoApiContext, "ATM机", "北京").tag("银行").cityLimit(true).makeRequest();
+        PlacesApi.districtRegionSearchQuery(geoApiContext, "ATM机", "北京").tag("银行").cityLimit(true).makeRequest();
 
     }
 
     @Test
     public void  CircularRegionSearchTest () throws Exception {
-
+        LatLng location = new LatLng();
+        location.lat = 39.915d;
+        location.lng = 116.404d;
+        PlacesApi.circularRegionSearchQuery(geoApiContext, "银行", location).makeRequest();
     }
+
+
+    @Test
+    public void  RectangleRegionSearchTest () throws Exception {
+        LatLng location1 = new LatLng(39.915,116.404);
+        LatLng location2 = new LatLng(39.975,116.414);
+        PlacesApi.rectangleRegionSearchQuery(geoApiContext, "银行", location1, location2).makeRequest();
+    }
+
+
 }
