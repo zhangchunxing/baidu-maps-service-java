@@ -1,10 +1,11 @@
 package com.zcx.baidu.maps.model;
 
 import java.io.Serializable;
+import java.util.Locale;
 import java.util.Objects;
 
 /**
- * @description: ${description}
+ * @description: 经纬度
  * @author: zhangchunxing
  * @create: 2018-11-03
  **/
@@ -23,7 +24,7 @@ public class LatLng implements Serializable {
 
     @Override
     public String toString() {
-        return lat + "," + lng;
+        return String.format(Locale.ENGLISH, "%.8f,%.8f", lat, lng);
     }
 
     @Override
