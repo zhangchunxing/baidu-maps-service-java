@@ -1,8 +1,10 @@
-package com.zcx.baidu.maps.model;
+package com.zcx.baidu.maps.model.request;
 
 import com.google.gson.FieldNamingPolicy;
 import com.zcx.baidu.maps.common.ApiConfig;
 import com.zcx.baidu.maps.common.GeoApiContext;
+import com.zcx.baidu.maps.model.PendingResultBase;
+import com.zcx.baidu.maps.model.ScopeEnum;
 
 /**
  * @description: 区域检索请求基类
@@ -27,8 +29,8 @@ public abstract class AbstractRegionSearchRequest<T extends AbstractRegionSearch
         return param("tag", tag);
     }
 
-    public T scope(PoiInfoEnum poiInfoEnum) {
-        return param("scope", poiInfoEnum);
+    public T scope(ScopeEnum scope) {
+        return param("scope", scope);
     }
 
     public T timestamp(long timestamp) {

@@ -1,4 +1,6 @@
-package com.zcx.baidu.maps.model;
+package com.zcx.baidu.maps.model.response;
+
+import com.zcx.baidu.maps.model.BaseApiResponse;
 
 /**
  * @description: 地点检索API请求结果的响应

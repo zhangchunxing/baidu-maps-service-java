@@ -2,6 +2,7 @@ package com.zcx.baidu.maps.model;
 
 import com.zcx.baidu.maps.common.ApiConfig;
 import com.zcx.baidu.maps.common.GeoApiContext;
+import com.zcx.baidu.maps.model.response.PlacesSearchResponse;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
@@ -32,8 +33,8 @@ public abstract class PendingResultBase<A extends PendingResultBase> {
 		return getInstance();
 	}
 
-	protected A param(String key, PoiInfoEnum poiInfoEnum) {
-		params.put(key, String.valueOf(poiInfoEnum.getCode()));
+	protected A param(String key, ScopeEnum scope) {
+		params.put(key, String.valueOf(scope.getCode()));
 		return getInstance();
 	}
 

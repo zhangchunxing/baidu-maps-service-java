@@ -6,13 +6,13 @@ package com.zcx.baidu.maps.model;
  * @author: zhangchunxing
  * @create: 2018-11-14
  */
-public enum PoiInfoEnum {
+public enum ScopeEnum {
 
 	BASIC(1), DETAILED(2);
 
 	private int code;
 
-	PoiInfoEnum(int code) {
+	ScopeEnum(int code) {
 		this.code = code;
 	}
 

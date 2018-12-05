@@ -1,8 +1,8 @@
 package com.zcx.baidu.maps.common;
 
 import com.google.gson.Gson;
-import com.zcx.baidu.maps.model.PlacesSearchResponse;
-import com.zcx.baidu.maps.model.PlacesSearchResult;
+import com.zcx.baidu.maps.model.response.PlacesSearchResponse;
+import com.zcx.baidu.maps.model.response.PlacesSearchResult;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -60,7 +60,7 @@ public class GeoApiContext {
 			if (ps.status == 0) {
 				PlacesSearchResult[] placesSearchResults = ps.results;
 				for (PlacesSearchResult result : placesSearchResults) {
-					System.out.println(result.address);
+					System.out.println(result.uid);
 				}
 			}
 		}

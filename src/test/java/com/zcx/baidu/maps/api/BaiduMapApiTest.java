@@ -2,10 +2,10 @@ package com.zcx.baidu.maps.api;
 
 import com.google.gson.Gson;
 import com.zcx.baidu.maps.common.GeoApiContext;
-import com.zcx.baidu.maps.model.DistrictRegionSearchRequest;
+import com.zcx.baidu.maps.model.request.DistrictRegionSearchRequest;
 import com.zcx.baidu.maps.model.LatLng;
-import com.zcx.baidu.maps.model.PlacesSearchResponse;
-import com.zcx.baidu.maps.model.PlacesSearchResult;
+import com.zcx.baidu.maps.model.response.PlacesSearchResponse;
+import com.zcx.baidu.maps.model.response.PlacesSearchResult;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -103,6 +103,13 @@ public class BaiduMapApiTest {
 
     @Test
     public void  RectangleRegionSearchTest () throws Exception {
+        LatLng location1 = new LatLng(39.915,116.404);
+        LatLng location2 = new LatLng(39.975,116.414);
+        PlacesApi.rectangleRegionSearchQuery(geoApiContext, "银行", location1, location2).makeRequest();
+    }
+
+    @Test
+    public void  PlacesDetailSearchTest () throws Exception {
         LatLng location1 = new LatLng(39.915,116.404);
         LatLng location2 = new LatLng(39.975,116.414);
         PlacesApi.rectangleRegionSearchQuery(geoApiContext, "银行", location1, location2).makeRequest();

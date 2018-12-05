@@ -1,6 +1,7 @@
-package com.zcx.baidu.maps.model;
+package com.zcx.baidu.maps.model.request;
 
 import com.zcx.baidu.maps.common.GeoApiContext;
+import com.zcx.baidu.maps.model.LatLng;
 
 /**
  * @description: 矩形区域检索请求
