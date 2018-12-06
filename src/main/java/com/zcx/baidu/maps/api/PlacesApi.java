@@ -2,9 +2,10 @@ package com.zcx.baidu.maps.api;
 
 
 import com.zcx.baidu.maps.common.GeoApiContext;
+import com.zcx.baidu.maps.model.LatLng;
 import com.zcx.baidu.maps.model.request.CircularRegionSearchRequest;
 import com.zcx.baidu.maps.model.request.DistrictRegionSearchRequest;
-import com.zcx.baidu.maps.model.LatLng;
+import com.zcx.baidu.maps.model.request.PlaceDetailsRequest;
 import com.zcx.baidu.maps.model.request.RectangleRegionSearchRequest;
 
 /**
@@ -66,7 +67,11 @@ public final class PlacesApi {
         return request;
     }
 
-    // public static
+    public static PlaceDetailsRequest placeDetails(GeoApiContext context, String uid) {
+        PlaceDetailsRequest request = new PlaceDetailsRequest(context);
+        request.uid(uid);
+        return request;
+    }
 
 
 

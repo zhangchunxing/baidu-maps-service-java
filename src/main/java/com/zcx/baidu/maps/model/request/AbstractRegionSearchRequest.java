@@ -13,7 +13,7 @@ import com.zcx.baidu.maps.model.response.PlacesSearchResponse;
  * @create: 2018-12-03
  **/
 public abstract class AbstractRegionSearchRequest<T extends AbstractRegionSearchRequest>
-        extends PendingResultBase<T> {
+        extends PendingResultBase<T, PlacesSearchResponse> {
 
     private static final ApiConfig API_CONFIG = new ApiConfig("/place/v2/search?output=json")
             .fieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);

@@ -11,21 +11,21 @@ import java.util.LinkedHashMap;
  * @author: zhangchunxing
  * @create: 2018-12-03
  */
-public abstract class PendingResultBase<A extends PendingResultBase> {
+public abstract class PendingResultBase<A extends PendingResultBase, R extends BaseApiResponse> {
 	private final GeoApiContext context;
 	private final ApiConfig config;
 
-	private Class<? extends BaseApiResponse> responseClass;
+	private Class<R> responseClass;
 	// 存放查询条件
 	private LinkedHashMap<String, String> params = new LinkedHashMap<>();
 
-	protected PendingResultBase(GeoApiContext context, ApiConfig config, Class<? extends BaseApiResponse> clazz) {
+	protected PendingResultBase(GeoApiContext context, ApiConfig config, Class<R> clazz) {
 		this.context = context;
 		this.config = config;
 		this.responseClass = clazz;
 	}
 
-	public BaseApiResponse makeRequest() throws IOException {
+	public R makeRequest() throws IOException {
 		return context.get(config, params, responseClass);
 	}
 

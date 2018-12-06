@@ -12,28 +12,28 @@ import com.zcx.baidu.maps.model.response.PlaceDetailResponse;
  * @author: zhangchunxing
  * @create: 2018-12-05
  */
-public class PlacesDetailSearchRequest extends PendingResultBase<PlacesDetailSearchRequest> {
+public class PlaceDetailsRequest extends PendingResultBase<PlaceDetailsRequest, PlaceDetailResponse> {
 
 	private static final ApiConfig API_CONFIG = new ApiConfig("/place/v2/detail?output=json")
 			.fieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
 
-	public PlacesDetailSearchRequest(GeoApiContext context) {
+	public PlaceDetailsRequest(GeoApiContext context) {
 		super(context, API_CONFIG, PlaceDetailResponse.class);
 	}
 
-	public PlacesDetailSearchRequest uid(String uid) {
+	public PlaceDetailsRequest uid(String uid) {
 		return param("uid", uid);
 	}
 
-	public PlacesDetailSearchRequest uids(String uids) {
+	public PlaceDetailsRequest uids(String uids) {
 		return param("uid", uids);
 	}
 
-	public PlacesDetailSearchRequest scope(ScopeEnum scope) {
+	public PlaceDetailsRequest scope(ScopeEnum scope) {
 		return param("scope", scope);
 	}
 
-	public PlacesDetailSearchRequest timestamp(long timestamp) {
+	public PlaceDetailsRequest timestamp(long timestamp) {
 		return param("timestamp", timestamp);
 	}
 

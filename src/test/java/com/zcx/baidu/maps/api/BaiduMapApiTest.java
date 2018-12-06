@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.zcx.baidu.maps.common.GeoApiContext;
 import com.zcx.baidu.maps.model.LatLng;
 import com.zcx.baidu.maps.model.request.DistrictRegionSearchRequest;
+import com.zcx.baidu.maps.model.response.PlaceDetailResponse;
 import com.zcx.baidu.maps.model.response.PlacesSearchResponse;
 import com.zcx.baidu.maps.model.response.PlacesSearchResult;
 import okhttp3.HttpUrl;
@@ -84,13 +85,14 @@ public class BaiduMapApiTest {
 
     @Test
     public void AdministrativeRegionsSearchTest2 () throws Exception {
-        PlacesSearchResponse a = (PlacesSearchResponse) new DistrictRegionSearchRequest(geoApiContext).query("ATM机").tag("银行").region("北京").makeRequest();
-        Stream.of(a.results).forEach(item -> System.out.println(item.name));
+        PlacesSearchResponse a = new DistrictRegionSearchRequest(geoApiContext).query("ATM机").tag("银行").region("北京").makeRequest();
+        Stream.of(a.results).forEach(item -> System.out.println(item.uid));
     }
 
     @Test
     public void AdministrativeRegionsSearchTest3 () throws Exception {
-        PlacesApi.districtRegionSearchQuery(geoApiContext, "ATM机", "北京").tag("银行").cityLimit(true).makeRequest();
+        PlacesSearchResponse a = PlacesApi.districtRegionSearchQuery(geoApiContext, "ATM机", "北京").tag("银行").cityLimit(true).makeRequest();
+        Stream.of(a.results).forEach(item -> System.out.println(item.name));
 
     }
 
@@ -112,9 +114,8 @@ public class BaiduMapApiTest {
 
     @Test
     public void  PlacesDetailSearchTest () throws Exception {
-        LatLng location1 = new LatLng(39.915,116.404);
-        LatLng location2 = new LatLng(39.975,116.414);
-        PlacesApi.rectangleRegionSearchQuery(geoApiContext, "银行", location1, location2).makeRequest();
+       PlaceDetailResponse b = PlacesApi.placeDetails(geoApiContext, "a8247a999fbf6a201c3894a4").makeRequest();
+        System.out.println(b.result.address);
     }
 
 

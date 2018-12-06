@@ -27,8 +27,8 @@ public class GeoApiContext {
 		this.AK = AK;
 	}
 
-	public BaseApiResponse get(ApiConfig apiConfig, Map<String, String> params,
-	                                                            Class<? extends BaseApiResponse> clazz) throws IOException {
+	public <R extends BaseApiResponse> R get(ApiConfig apiConfig, Map<String, String> params,
+	                                                            Class<R> clazz) throws IOException {
 		StringBuilder sburl = new StringBuilder(apiConfig.hostName + apiConfig.path);
 
 		params.put("ak", AK);
@@ -51,7 +51,7 @@ public class GeoApiContext {
 
 		Response response = client.newCall(request).execute();
 
-		BaseApiResponse ps = null;
+		R ps = null;
 		if (response.isSuccessful()) {
 			//如果请求成功，通知Handler更新数据
 			String res = response.body().string();
