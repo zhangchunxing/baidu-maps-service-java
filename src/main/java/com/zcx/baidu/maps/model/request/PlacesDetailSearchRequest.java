@@ -5,6 +5,7 @@ import com.zcx.baidu.maps.common.ApiConfig;
 import com.zcx.baidu.maps.common.GeoApiContext;
 import com.zcx.baidu.maps.model.PendingResultBase;
 import com.zcx.baidu.maps.model.ScopeEnum;
+import com.zcx.baidu.maps.model.response.PlaceDetailResponse;
 
 /**
  * @description: 地点详情检索
@@ -17,7 +18,7 @@ public class PlacesDetailSearchRequest extends PendingResultBase<PlacesDetailSea
 			.fieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
 
 	public PlacesDetailSearchRequest(GeoApiContext context) {
-		super(context, API_CONFIG);
+		super(context, API_CONFIG, PlaceDetailResponse.class);
 	}
 
 	public PlacesDetailSearchRequest uid(String uid) {

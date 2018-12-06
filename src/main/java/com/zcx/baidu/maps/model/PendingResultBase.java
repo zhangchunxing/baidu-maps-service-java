@@ -2,7 +2,6 @@ package com.zcx.baidu.maps.model;
 
 import com.zcx.baidu.maps.common.ApiConfig;
 import com.zcx.baidu.maps.common.GeoApiContext;
-import com.zcx.baidu.maps.model.response.PlacesSearchResponse;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
@@ -16,16 +15,18 @@ public abstract class PendingResultBase<A extends PendingResultBase> {
 	private final GeoApiContext context;
 	private final ApiConfig config;
 
+	private Class<? extends BaseApiResponse> responseClass;
 	// 存放查询条件
 	private LinkedHashMap<String, String> params = new LinkedHashMap<>();
 
-	protected PendingResultBase(GeoApiContext context, ApiConfig config) {
+	protected PendingResultBase(GeoApiContext context, ApiConfig config, Class<? extends BaseApiResponse> clazz) {
 		this.context = context;
 		this.config = config;
+		this.responseClass = clazz;
 	}
 
-	public PlacesSearchResponse makeRequest() throws IOException {
-		return context.get(config, params);
+	public BaseApiResponse makeRequest() throws IOException {
+		return context.get(config, params, responseClass);
 	}
 
 	protected A param(String key, String value) {

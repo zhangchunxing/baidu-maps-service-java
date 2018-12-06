@@ -5,6 +5,7 @@ import com.zcx.baidu.maps.common.ApiConfig;
 import com.zcx.baidu.maps.common.GeoApiContext;
 import com.zcx.baidu.maps.model.PendingResultBase;
 import com.zcx.baidu.maps.model.ScopeEnum;
+import com.zcx.baidu.maps.model.response.PlacesSearchResponse;
 
 /**
  * @description: 区域检索请求基类
@@ -18,7 +19,7 @@ public abstract class AbstractRegionSearchRequest<T extends AbstractRegionSearch
             .fieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
 
     public AbstractRegionSearchRequest(GeoApiContext context) {
-        super(context, API_CONFIG);
+        super(context, API_CONFIG, PlacesSearchResponse.class);
     }
 
     public T query(String placeName) {

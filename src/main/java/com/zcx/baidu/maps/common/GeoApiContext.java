@@ -1,8 +1,7 @@
 package com.zcx.baidu.maps.common;
 
 import com.google.gson.Gson;
-import com.zcx.baidu.maps.model.response.PlacesSearchResponse;
-import com.zcx.baidu.maps.model.response.PlacesSearchResult;
+import com.zcx.baidu.maps.model.BaseApiResponse;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -28,7 +27,8 @@ public class GeoApiContext {
 		this.AK = AK;
 	}
 
-	public PlacesSearchResponse get(ApiConfig apiConfig, Map<String, String> params) throws IOException {
+	public BaseApiResponse get(ApiConfig apiConfig, Map<String, String> params,
+	                                                            Class<? extends BaseApiResponse> clazz) throws IOException {
 		StringBuilder sburl = new StringBuilder(apiConfig.hostName + apiConfig.path);
 
 		params.put("ak", AK);
@@ -51,18 +51,18 @@ public class GeoApiContext {
 
 		Response response = client.newCall(request).execute();
 
-		PlacesSearchResponse ps = null;
+		BaseApiResponse ps = null;
 		if (response.isSuccessful()) {
 			//如果请求成功，通知Handler更新数据
 			String res = response.body().string();
-			ps = gs.fromJson(res, PlacesSearchResponse.class);
+			ps = gs.fromJson(res, clazz);
 
-			if (ps.status == 0) {
-				PlacesSearchResult[] placesSearchResults = ps.results;
-				for (PlacesSearchResult result : placesSearchResults) {
-					System.out.println(result.uid);
-				}
-			}
+			// if (ps.status == 0) {
+			// 	PlacesSearchResult[] placesSearchResults = ps.results;
+			// 	for (PlacesSearchResult result : placesSearchResults) {
+			// 		System.out.println(result.uid);
+			// 	}
+			// }
 		}
 
 		return ps;

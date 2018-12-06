@@ -2,8 +2,8 @@ package com.zcx.baidu.maps.api;
 
 import com.google.gson.Gson;
 import com.zcx.baidu.maps.common.GeoApiContext;
-import com.zcx.baidu.maps.model.request.DistrictRegionSearchRequest;
 import com.zcx.baidu.maps.model.LatLng;
+import com.zcx.baidu.maps.model.request.DistrictRegionSearchRequest;
 import com.zcx.baidu.maps.model.response.PlacesSearchResponse;
 import com.zcx.baidu.maps.model.response.PlacesSearchResult;
 import okhttp3.HttpUrl;
@@ -12,6 +12,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.stream.Stream;
 
 /**
  * @description: ${description}
@@ -82,8 +84,8 @@ public class BaiduMapApiTest {
 
     @Test
     public void AdministrativeRegionsSearchTest2 () throws Exception {
-        new DistrictRegionSearchRequest(geoApiContext).query("ATM机").tag("银行").region("北京").makeRequest();
-
+        PlacesSearchResponse a = (PlacesSearchResponse) new DistrictRegionSearchRequest(geoApiContext).query("ATM机").tag("银行").region("北京").makeRequest();
+        Stream.of(a.results).forEach(item -> System.out.println(item.name));
     }
 
     @Test
