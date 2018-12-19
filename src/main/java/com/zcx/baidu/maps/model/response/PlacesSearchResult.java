@@ -24,9 +24,9 @@ public class PlacesSearchResult implements Serializable {
 
     public String city;
 
-    public String area;
+    public String area; // 区县
 
-    public String street_id;
+    public String street_id; //
 
     // 是否有详情页：1有，0没有
     public int detail;
