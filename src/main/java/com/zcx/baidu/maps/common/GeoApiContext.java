@@ -29,14 +29,14 @@ public class GeoApiContext {
 
 	public <R extends BaseApiResponse> R get(ApiConfig apiConfig, Map<String, String> params,
 	                                                            Class<R> clazz) throws IOException {
-		StringBuilder sburl = new StringBuilder(apiConfig.hostName + apiConfig.path);
+		StringBuilder url = new StringBuilder(apiConfig.hostName + apiConfig.path);
 
 		params.put("ak", AK);
 		// 拼接请求参数，并做UTF-8的编码
 		params.forEach((key, value) -> {
-			sburl.append('&').append(key).append("=");
+			url.append('&').append(key).append("=");
 			try {
-				sburl.append(URLEncoder.encode(value, "UTF-8"));
+				url.append(URLEncoder.encode(value, "UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				// This should never happen. UTF-8 support is required for every Java implementation.
 				throw new IllegalStateException(e);
@@ -44,7 +44,7 @@ public class GeoApiContext {
 		});
 
 		Request request = new Request.Builder()
-				.url(sburl.toString())
+				.url(url.toString())
 				.build();
 
 		System.err.println(request);

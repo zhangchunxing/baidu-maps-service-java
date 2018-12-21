@@ -14,7 +14,7 @@ public class PlaceSuggestionResponse extends BaseApiResponse {
 
     public List<PlaceInfo> result;
 
-    static class PlaceInfo   {
+    public static class PlaceInfo   {
 
         public String name;
         public LatLng location;

@@ -50,6 +50,16 @@ public abstract class PendingResultBase<A extends PendingResultBase, R extends B
 		return getInstance();
 	}
 
+	protected A param(String key, LatLng value) {
+		params.put(key, value.toString());
+		return getInstance();
+	}
+
+	protected A param(String key, CoordType value) {
+		params.put(key, String.valueOf(value.getCode()));
+		return getInstance();
+	}
+
 	private A getInstance() {
 		A result = (A) this;
 		return result;
