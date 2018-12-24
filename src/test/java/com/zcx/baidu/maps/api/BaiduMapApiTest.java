@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.zcx.baidu.maps.common.GeoApiContext;
 import com.zcx.baidu.maps.model.LatLng;
 import com.zcx.baidu.maps.model.request.DistrictRegionSearchRequest;
-import com.zcx.baidu.maps.model.response.PlaceDetailResponse;
-import com.zcx.baidu.maps.model.response.PlaceSuggestionResponse;
-import com.zcx.baidu.maps.model.response.PlacesSearchResponse;
-import com.zcx.baidu.maps.model.response.PlacesSearchResult;
+import com.zcx.baidu.maps.model.response.*;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -125,6 +122,17 @@ public class BaiduMapApiTest {
 		PlaceSuggestionResponse response = PlaceSuggestionApi.placeSuggestion(geoApiContext, "天安门", "北京").makeRequest();
 		response.result.stream().forEach(place -> System.out.println(place.name));
 	}
+
+	@Test
+	public void GeocoderTest() throws Exception {
+		// 正地理编码
+		// GeocodingResponse response = GeocodingApi.geocode(geoApiContext, "北京市海淀区上地十街10号").makeRequest();
+		// 逆地理编码
+		LatLng location = new LatLng(39.91399787517,116.40393684689);
+		GeocodingResponse response = GeocodingApi.reverseGeocode(geoApiContext, location).makeRequest();
+		System.out.println(response.result.sematic_description);
+	}
+
 
 
 }
