@@ -2,6 +2,7 @@ package com.zcx.baidu.maps.api;
 
 import com.google.gson.Gson;
 import com.zcx.baidu.maps.common.GeoApiContext;
+import com.zcx.baidu.maps.model.CoordType;
 import com.zcx.baidu.maps.model.LatLng;
 import com.zcx.baidu.maps.model.request.DistrictRegionSearchRequest;
 import com.zcx.baidu.maps.model.response.*;
@@ -131,6 +132,14 @@ public class BaiduMapApiTest {
 		LatLng location = new LatLng(39.91399787517,116.40393684689);
 		GeocodingResponse response = GeocodingApi.reverseGeocode(geoApiContext, location).makeRequest();
 		System.out.println(response.result.sematic_description);
+	}
+
+	@Test
+	public void timezoneTest() throws Exception {
+
+		LatLng location = new LatLng(-36.52,174.46);
+		TimeZoneResponse response = TimeZoneApi.timeZoneQuery(geoApiContext, location).coordType(CoordType.WGS84ll).makeRequest();
+		System.out.println(response.timezone_id);
 	}
 
 

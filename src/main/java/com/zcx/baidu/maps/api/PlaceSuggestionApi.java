@@ -8,7 +8,7 @@ import com.zcx.baidu.maps.model.request.PlaceSuggestionRequest;
  * @author: zhangchunxing
  * @create: 2018-12-19
  **/
-public final class PlaceSuggestionApi {
+public class PlaceSuggestionApi {
 
     private PlaceSuggestionApi() {}
 

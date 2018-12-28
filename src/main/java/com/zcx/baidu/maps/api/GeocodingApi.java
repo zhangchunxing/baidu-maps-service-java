@@ -9,7 +9,7 @@ import com.zcx.baidu.maps.model.request.GeocodingRequest;
  * @author: zhangchunxing
  * @create: 2018-12-24
  */
-public final class GeocodingApi {
+public class GeocodingApi {
 	private GeocodingApi() {}
 
 

@@ -39,7 +39,7 @@ public class PlaceSuggestionRequest extends PendingResultBase<PlaceSuggestionReq
     }
 
     public PlaceSuggestionRequest coordType(CoordType coordType) {
-        return param("location", coordType);
+        return param("coord_type", coordType);
     }
 
     public PlaceSuggestionRequest retCoordType(CoordType coordType) {

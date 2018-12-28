@@ -13,7 +13,7 @@ import com.zcx.baidu.maps.model.request.RectangleRegionSearchRequest;
  * @author: zhangchunxing
  * @create: 2018-10-26
  **/
-public final class PlacesApi {
+public class PlacesApi {
 
     private PlacesApi() {}
 
