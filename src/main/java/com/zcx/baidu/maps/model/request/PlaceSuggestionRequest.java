@@ -46,8 +46,8 @@ public class PlaceSuggestionRequest extends PendingResultBase<PlaceSuggestionReq
         return param("ret_coordtype", coordType);
     }
 
-    public PlaceSuggestionRequest timestamp(long timestamp) {
-        return param("timestamp", timestamp);
-    }
+	// public PlaceSuggestionRequest timestamp(long timestamp) {
+	//     return param("timestamp", timestamp);
+	// }
 
 }

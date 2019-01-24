@@ -34,8 +34,8 @@ public abstract class AbstractRegionSearchRequest<T extends AbstractRegionSearch
         return param("scope", scope);
     }
 
-    public T timestamp(long timestamp) {
-        return param("timestamp", timestamp);
-    }
+	// public T timestamp(long timestamp) {
+	//     return param("timestamp", timestamp);
+	// }
 
 }

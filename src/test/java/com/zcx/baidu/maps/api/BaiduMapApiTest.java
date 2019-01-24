@@ -23,18 +23,28 @@ import java.util.stream.Stream;
 public class BaiduMapApiTest {
 	private final String hostName = "http://api.map.baidu.com";
 	private final String placeSearchUrl = "/place/v2/search";
-	private final String SK = "4EOhUAvNHmEcAj15xBEFY08BLzPNOnIV";
-	private final String whiteSK = "rmynlXFYNXdT9WusBmRcziCZYGLMufOY";
+
+	// sn校验方式
+	private final String AK = "Rr0tW9EPsdspfGc63m65GwOGUcUEXa9V";
+	private final String SK = "nqUA2w3llc4luCm3GHvQoORWTLEVn8Ta";
+
+	private final String whiteAK = "rmynlXFYNXdT9WusBmRcziCZYGLMufOY";
 
 	public final OkHttpClient client = new OkHttpClient();
 
 	private Gson gs = new Gson();
 
 	private GeoApiContext geoApiContext;
+	private GeoApiContext geoApiContextWithAK;
 
 	@Before
 	public void setup() {
-		geoApiContext = new GeoApiContext(whiteSK);
+		// AK白名单校验
+		geoApiContext = new GeoApiContext(whiteAK);
+
+		// SK检验
+		geoApiContextWithAK = new GeoApiContext(AK);
+		geoApiContextWithAK.setSK(SK);
 	}
 
 	// 计算sn跟参数对出现顺序有关，
@@ -61,7 +71,7 @@ public class BaiduMapApiTest {
 				.addQueryParameter("tag", "银行")
 				.addQueryParameter("region", "北京")
 				.addQueryParameter("output", "json")
-				.addQueryParameter("ak", whiteSK).build();
+				.addQueryParameter("ak", whiteAK).build();
 
 		System.out.println(httpUrl.toString());
 
@@ -101,7 +111,7 @@ public class BaiduMapApiTest {
 		LatLng location = new LatLng();
 		location.lat = 39.915d;
 		location.lng = 116.404d;
-		PlacesApi.circularRegionSearchQuery(geoApiContext, "银行", location).makeRequest();
+		PlacesApi.circularRegionSearchQuery(geoApiContextWithAK, "银行", location).makeRequest();
 	}
 
 

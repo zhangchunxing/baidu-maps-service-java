@@ -33,8 +33,8 @@ public class PlaceDetailsRequest extends PendingResultBase<PlaceDetailsRequest, 
 		return param("scope", scope);
 	}
 
-	public PlaceDetailsRequest timestamp(long timestamp) {
-		return param("timestamp", timestamp);
-	}
+	// public PlaceDetailsRequest timestamp(long timestamp) {
+	// 	return param("timestamp", timestamp);
+	// }
 
 }

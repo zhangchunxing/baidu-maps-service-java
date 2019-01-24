@@ -6,29 +6,24 @@ import java.security.MessageDigest;
 import java.util.Map;
 
 /**
- * @description: sn计算辅助
+ * @description: 计算签名
  * @author: zhangchunxing
  * @create: 2018-10-27
  **/
 public final class SnCalHelper {
-
-	private static final String AK = "x1yHzp8dMcnylGh1UbWNlqkad8MafGBq";
-	private static final String SK = "4EOhUAvNHmEcAj15xBEFY08BLzPNOnIV";
 
 	private SnCalHelper() {
 	}
 
 
 	/**
-	 *
+	 * 签名
 	 * @param uri
 	 * @param paramsMap LinkedHashMap
 	 * @return
 	 */
-	public static String getSn(String uri, Map paramsMap) {
-
+	public static String getSn(String uri, Map paramsMap, String SK) {
 		try {
-			paramsMap.put("ak", AK);
 			// 调用下面的toQueryString方法，
 			// 对LinkedHashMap内所有value作utf8编码
 			String paramsStr = toQueryString(paramsMap);
