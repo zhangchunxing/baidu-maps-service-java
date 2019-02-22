@@ -1,14 +1,14 @@
 package com.zcx.baidu.maps.model.response;
 
 
-import com.zcx.baidu.maps.model.BaseApiResponse;
+import com.zcx.baidu.maps.model.ApiResponse;
 
 /**
  * @description: 时区
  * @author: zhangchunxing
  * @create: 2018-11-21
  */
-public class TimeZoneResponse extends BaseApiResponse {
+public class TimeZoneResponse extends ApiResponse {
     /**
      * 请求位置的实际时间=传入的timestamp + dst_offset + raw_offset
      */

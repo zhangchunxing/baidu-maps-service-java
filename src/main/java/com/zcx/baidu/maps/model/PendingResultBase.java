@@ -7,11 +7,12 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 
 /**
- * @description:
+ * 请求百度API的基类
+ *
  * @author: zhangchunxing
  * @create: 2018-12-03
  */
-public abstract class PendingResultBase<A extends PendingResultBase, R extends BaseApiResponse> {
+public abstract class PendingResultBase<A extends PendingResultBase, R extends ApiResponse> {
 	private final GeoApiContext context;
 	private final ApiConfig config;
 
@@ -25,7 +26,7 @@ public abstract class PendingResultBase<A extends PendingResultBase, R extends B
 		this.responseClass = clazz;
 	}
 
-	public R makeRequest() throws IOException {
+	public R await() throws IOException {
 		return context.get(config, params, responseClass);
 	}
 

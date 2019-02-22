@@ -3,11 +3,11 @@ package com.zcx.baidu.maps.model;
 import java.io.Serializable;
 
 /**
- * @description: 所有API返回
+ * @description: 所有地图API响应继承该抽象类
  * @author: zhangchunxing
  * @create: 2018-11-03
  **/
-public abstract class BaseApiResponse implements Serializable {
+public abstract class ApiResponse implements Serializable {
 	private static final long serialVersionUID = 1L;
 	// 本次API访问状态，如果成功返回0，如果失败返回其他数字。（见服务状态码）
 	public int status;

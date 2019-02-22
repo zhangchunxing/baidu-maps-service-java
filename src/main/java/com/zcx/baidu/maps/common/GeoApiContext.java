@@ -1,7 +1,7 @@
 package com.zcx.baidu.maps.common;
 
 import com.google.gson.Gson;
-import com.zcx.baidu.maps.model.BaseApiResponse;
+import com.zcx.baidu.maps.model.ApiResponse;
 import com.zcx.baidu.maps.util.SnCalHelper;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -14,7 +14,8 @@ import java.time.Instant;
 import java.util.Map;
 
 /**
- * @description:  这个类应该设计成单例！
+ * 请求百度API的入口
+ *
  * @author: zhangchunxing
  * @create: 2018-11-05
  */
@@ -24,17 +25,17 @@ public class GeoApiContext {
 	private String SK;
 
 	private final OkHttpClient client = new OkHttpClient();
-
 	private final Gson gs = new Gson();
 
 	public GeoApiContext(String AK) {
 		this.AK = AK;
 	}
 
-	public <R extends BaseApiResponse> R get(ApiConfig apiConfig, Map<String, String> params,
-	                                                            Class<R> clazz) throws IOException {
+	public <R extends ApiResponse> R get(ApiConfig apiConfig, Map<String, String> params,
+	                                     Class<R> clazz) throws IOException {
 		StringBuilder url = new StringBuilder(apiConfig.hostName + apiConfig.path);
 		params.put("ak", AK);
+
 		// 判断AK校验方式
 		if (SK != null && !"".equals(SK)) {
 			// 设置sn后timestamp必填，以秒为单位
@@ -42,6 +43,7 @@ public class GeoApiContext {
 			// 设置SN
 			params.put("sn", SnCalHelper.getSn(url.toString(), params, SK));
 		}
+
 		// 拼接请求参数，并做UTF-8的编码
 		for (Map.Entry<String, String> entry : params.entrySet()) {
 			String key = entry.getKey();
@@ -54,11 +56,10 @@ public class GeoApiContext {
 				throw new IllegalStateException(e);
 			}
 		}
+
 		Request request = new Request.Builder()
 				.url(url.toString())
 				.build();
-
-		System.err.println(request);
 
 		Response response = client.newCall(request).execute();
 		R ps = null;

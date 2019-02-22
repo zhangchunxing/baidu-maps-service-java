@@ -95,13 +95,13 @@ public class BaiduMapApiTest {
 
 	@Test
 	public void AdministrativeRegionsSearchTest2() throws Exception {
-		PlacesSearchResponse a = new DistrictRegionSearchRequest(geoApiContext).query("ATM机").tag("银行").region("北京").makeRequest();
+		PlacesSearchResponse a = new DistrictRegionSearchRequest(geoApiContext).query("ATM机").tag("银行").region("北京").await();
 		Stream.of(a.results).forEach(item -> System.out.println(item.uid));
 	}
 
 	@Test
 	public void AdministrativeRegionsSearchTest3() throws Exception {
-		PlacesSearchResponse a = PlacesApi.districtRegionSearchQuery(geoApiContext, "ATM机", "北京").tag("银行").cityLimit(true).makeRequest();
+		PlacesSearchResponse a = PlacesApi.districtRegionSearchQuery(geoApiContext, "ATM机", "北京").tag("银行").cityLimit(true).await();
 		Stream.of(a.results).forEach(item -> System.out.println(item.name));
 
 	}
@@ -111,7 +111,7 @@ public class BaiduMapApiTest {
 		LatLng location = new LatLng();
 		location.lat = 39.915d;
 		location.lng = 116.404d;
-		PlacesApi.circularRegionSearchQuery(geoApiContextWithAK, "银行", location).makeRequest();
+		PlacesApi.circularRegionSearchQuery(geoApiContextWithAK, "银行", location).await();
 	}
 
 
@@ -119,18 +119,18 @@ public class BaiduMapApiTest {
 	public void RectangleRegionSearchTest() throws Exception {
 		LatLng location1 = new LatLng(39.915, 116.404);
 		LatLng location2 = new LatLng(39.975, 116.414);
-		PlacesApi.rectangleRegionSearchQuery(geoApiContext, "银行", location1, location2).makeRequest();
+		PlacesApi.rectangleRegionSearchQuery(geoApiContext, "银行", location1, location2).await();
 	}
 
 	@Test
 	public void PlacesDetailSearchTest() throws Exception {
-		PlaceDetailResponse b = PlacesApi.placeDetails(geoApiContext, "a8247a999fbf6a201c3894a4").makeRequest();
+		PlaceDetailResponse b = PlacesApi.placeDetails(geoApiContext, "a8247a999fbf6a201c3894a4").await();
 		System.out.println(b.result.address);
 	}
 
 	@Test
 	public void PlacesSuggestionSearchTest() throws Exception {
-		PlaceSuggestionResponse response = PlaceSuggestionApi.placeSuggestion(geoApiContext, "天安门", "北京").makeRequest();
+		PlaceSuggestionResponse response = PlaceSuggestionApi.placeSuggestion(geoApiContext, "天安门", "北京").await();
 		response.result.stream().forEach(place -> System.out.println(place.name));
 	}
 
@@ -140,7 +140,7 @@ public class BaiduMapApiTest {
 		// GeocodingResponse response = GeocodingApi.geocode(geoApiContext, "北京市海淀区上地十街10号").makeRequest();
 		// 逆地理编码
 		LatLng location = new LatLng(39.91399787517,116.40393684689);
-		GeocodingResponse response = GeocodingApi.reverseGeocode(geoApiContext, location).makeRequest();
+		GeocodingResponse response = GeocodingApi.reverseGeocode(geoApiContext, location).await();
 		System.out.println(response.result.sematic_description);
 	}
 
@@ -148,7 +148,7 @@ public class BaiduMapApiTest {
 	public void timezoneTest() throws Exception {
 
 		LatLng location = new LatLng(-36.52,174.46);
-		TimeZoneResponse response = TimeZoneApi.timeZoneQuery(geoApiContext, location).coordType(CoordType.WGS84ll).makeRequest();
+		TimeZoneResponse response = TimeZoneApi.timeZoneQuery(geoApiContext, location).coordType(CoordType.WGS84ll).await();
 		System.out.println(response.timezone_id);
 	}
 

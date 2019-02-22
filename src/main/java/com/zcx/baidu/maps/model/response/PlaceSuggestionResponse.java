@@ -1,6 +1,6 @@
 package com.zcx.baidu.maps.model.response;
 
-import com.zcx.baidu.maps.model.BaseApiResponse;
+import com.zcx.baidu.maps.model.ApiResponse;
 import com.zcx.baidu.maps.model.LatLng;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  * @author: zhangchunxing
  * @create: 2018-12-20
  **/
-public class PlaceSuggestionResponse extends BaseApiResponse {
+public class PlaceSuggestionResponse extends ApiResponse {
 
     public List<PlaceInfo> result;
 
